@@ -1,0 +1,28 @@
+<div class="blog-card">
+  <div class="d-flex">
+    <h5 class="blog-title">
+      {{ blog.title }}
+    </h5>
+    <div class="container d-flex justify-content-end">
+      <button type="button" (click)="deletePost(blog.id)" class="btn btn-outline-dark">
+        Delete
+      </button>
+    </div>
+  </div>
+  <span> {{ blog.date | date }} </span>
+  <div class="blog-cover-image">
+    <img src="{{ blog.imgUrl }}" alt="blog-img" />
+  </div>
+  <p class="blog-desc">
+    {{ blog.description }}
+  </p>
+  <div class="blog-rating">
+    <ul class="list-inline rating-list" 
+          *ngFor="let star of stars" style="display: inline-block" >
+            <li (click)="getRate(star,blog.id)"
+                [ngClass]="{'selected': (star <= blog.rate)}">
+              <i class="fa fa-star"></i>
+            </li> 
+      </ul>
+  </div>
+</div>
